@@ -6,10 +6,11 @@ import Todo from './Todo';
 
 
 const TodoList = ({todos, removeTodo, toggleTodo, editTodo}) => {
-  return (
+  if (todos.length)
+  return (    
     <Paper>
       <List>
-      {todos.map(todo => {
+      {todos.map((todo, index) => {
         return (
           <Fragment>
             <Todo 
@@ -21,13 +22,14 @@ const TodoList = ({todos, removeTodo, toggleTodo, editTodo}) => {
               toggleTodo={toggleTodo}
               editTodo={editTodo}
             />
-            <Divider />
+            { index < todos.length - 1 ? <Divider /> : null}
           </Fragment>
         )
       })}
       </List>
     </Paper>
-  )
+  );
+  return null;
 }
 
 export default TodoList;
